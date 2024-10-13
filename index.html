@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <title>Exercise 6</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="inputtext">
+      <input class="input" id="text"/>
+      <div class="bttns">   
+        <button onclick="pushItem()">Push</button>
+        <button onclick="popItem()">Pop</button>
+    </div>
+
+    </div>
+    <div class="stack">
+
+      <span id="item1"></span>
+      <span id="item2"></span>
+      <span id="item3"></span>
+      <span id="item4"></span>
+      <span id="item5"></span>
+      <span id="item6"></span>
+      <span id="item7"></span>
+      <span id="item8"></span>
+      <span id="item9"></span>
+      <span id="item10"></span>
+    </div>
+  </div>
+
+  <script>
+    const list = [];
+
+    function pushItem() {
+      const input = document.getElementById('text');
+      const value = input.value;
+
+      if (value) {
+        if (list.length < 10) {
+          list.push(value);
+          updateList();
+        } else {
+          alert('Stack is full');
+        }
+        input.value = '';
+      } else {
+        alert('Input is empty');
+      }
+    }
+
+    function popItem() {
+      if (list.length > 0) {
+        list.pop();
+        updateList();
+      } 
+      
+    }
+
+    function updateList() {
+
+      for (let i = 10; i >= 1; i--) {
+    const span = document.getElementById(`item${i}`);
+    span.textContent = list[10 - i] || '';
+      }
+    }
+  </script>
+
+</body>
+</html>
